@@ -7,7 +7,7 @@ The network begins with an Eero device acting as the ISP handoff, providing WAN 
 A Hohtouying 4-Port PoE switch serves as the core/distribution switch. Two STEAMEMO 8-Port Smart Managed Switches operate as access switches, each receiving a clean uplink from the core. A Tenda AC1200 router is integrated as a downstream guest/IoT network, allowing realistic multi-LAN routing and isolation.
 A gaming PC acts as both the hypervisor and the administrative workstation. It hosts multiple virtual machines for directory services, monitoring, and client simulation. A 7-inch HDMI mini monitor and USB-powered LED strip provide a functional, SOC-style visual element inside the rack.
 
-Hardware Used
+Hardware Used (About $250 at the end of the day)
 - Eero (ISP handoff)
 - TP-Link ER605 V2 Firewall/Router
 - Hohtouying 4-Port PoE Switch (with 2 uplinks)
