@@ -1,4 +1,5 @@
-#Homelab Enterprise Network Project
+# Homelab Enterprise Network Project
+
 This repository documents the design and deployment of a small-scale enterprise-style network environment built using affordable hardware. The goal of this project is to simulate a realistic office network with proper segmentation, a core–access switch hierarchy, a downstream router/AP, and a virtualized server environment for learning, experimentation, and portfolio demonstration.
 
 Overview
