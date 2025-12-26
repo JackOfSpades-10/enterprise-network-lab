@@ -1,0 +1,69 @@
+# Virtual Machine Inventory
+This document lists all planned virtual machines, their roles, operating systems, and network placement. All VMs run on the gaming PC hypervisor.
+
+---
+
+## 1. Core Infrastructure
+
+### DC01 – Domain Controller
+- OS: Windows Server (2019 or 2022)
+- Role: Active Directory Domain Services, DNS
+- Network: LAN-Core
+- Notes: Primary identity provider for the lab
+
+### FS01 – File Server
+- OS: Windows Server
+- Role: SMB shares, lab storage, permissions testing
+- Network: LAN-Core
+- Notes: Used for NTFS/ACL practice and centralized storage
+
+### MGMT01 – Management Workstation
+- OS: Windows 10 or Windows 11
+- Role: Administrative jump box
+- Network: LAN-Core
+- Notes: Runs RSAT tools, RDP, SSH, browser-based management
+
+---
+
+## 2. Monitoring and Security
+
+### LOG01 – Monitoring / SIEM Server
+- OS: Linux (Ubuntu Server recommended)
+- Role: Syslog collection, SIEM, dashboards
+- Network: LAN-Core
+- Notes: Receives logs from ER605, Tenda, Windows servers, and clients
+
+---
+
+## 3. Client Systems (Windows Only)
+
+### WIN-CLIENT01 – Windows Client
+- OS: Windows 10 or Windows 11
+- Role: Domain-joined workstation
+- Network: LAN-Core
+- Notes: Used for GPO testing, login scripts, software deployment
+
+### WIN-CLIENT02 – Secondary Windows Client (Optional)
+- OS: Windows 10 or Windows 11
+- Role: Additional test workstation
+- Network: LAN-Core
+- Notes: Useful for multi-user or multi-device testing
+
+---
+
+## 4. Guest/IoT Network Simulation
+
+### GUEST-LINUX01 – Guest Network VM
+- OS: Lightweight Linux distro
+- Role: Simulated IoT/guest device
+- Network: Guest/IoT (behind Tenda router)
+- Notes: Used to test isolation and firewall rules
+
+---
+
+## 5. Future VM Ideas
+- WSUS server for Windows updates
+- Dedicated DNS filtering server (Pi-hole or AdGuard)
+- Web server for internal testing
+- Vulnerable VM for security practice
+- Backup server (Veeam, UrBackup, etc.)
