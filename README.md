@@ -31,3 +31,4 @@ This project is:
 
 Design decisions were made to reflect how MSPs actually deploy, manage, and troubleshoot infrastructure.
 
+Please note that the information in this repo was compiled from Microsoft Copilot using all of the notes, and relavent infromation about the project
