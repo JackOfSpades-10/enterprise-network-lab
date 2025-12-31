@@ -4,7 +4,7 @@
 
 The lab architecture models a real-world MSP-managed client environment with mixed physical and virtual infrastructure, layered control planes, and clear ownership boundaries.
 
-Physical wiring was intentionally left unchanged to reflect the reality that MSPs frequently inherit environments where rewiring is impractical or undesirable.
+Physical wiring was intentionally left unchanged from first attemtp to reflect the reality that MSPs frequently inherit environments where rewiring is impractical or undesirable.
 
 ## Physical Infrastructure
 
@@ -39,9 +39,3 @@ All routing, DHCP, and policy enforcement occur at the firewall layer.
 
 This separation improves fault isolation and mirrors enterprise operational models.
 
-## MSP-Oriented Design Rationale
-
-- Physical simplicity reduces client disruption
-- Logical control provides consistency
-- Virtualization enables safe testing
-- GUI-driven tools support junior escalation
