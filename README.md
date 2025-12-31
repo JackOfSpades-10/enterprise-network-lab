@@ -13,7 +13,7 @@ The primary purpose of the lab is not only to make systems work, but to demonstr
 
 A specific design goal was to **centralize day-to-day operations** (monitoring, VM lifecycle control, system health) while avoiding over-centralization of configuration that would reduce clarity or reliability.
 
-## High-Level Goals
+## Goals
 
 - Force all physical and virtual traffic through a single firewall
 - Preserve existing physical wiring (as in inherited client environments)
@@ -21,17 +21,13 @@ A specific design goal was to **centralize day-to-day operations** (monitoring, 
 - Simulate real office users and administrative workflows
 - Explore automation opportunities (start/stop, visibility, lifecycle control)
 
-## What This Is (and Is Not)
+## What This Is
 
 This project is:
 - A simulation of a commercial / enterprise-style network
 - Designed around MSP operational realities
 - Focused on visibility, maintainability, and supportability
 
-This project is not:
-- A single-pane-of-glass fantasy
-- A vendor-locked environment
-- A purely academic exercise
 
 Design decisions were made to reflect how MSPs actually deploy, manage, and troubleshoot infrastructure.
 
