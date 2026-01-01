@@ -1,41 +1,59 @@
-# Infrastructure & Architecture Design
+# Lab Architecture
 
-## Overview
+> This document tracks the architectural direction, operational decisions,
+> and lessons learned during the build-out of the lab environment.
 
-The lab architecture models a real-world MSP-managed client environment with mixed physical and virtual infrastructure, layered control planes, and clear ownership boundaries.
+## Architectural Overview
 
-Physical wiring was intentionally left unchanged from first attemtp to reflect the reality that MSPs frequently inherit environments where rewiring is impractical or undesirable.
+The lab implements a hybrid network architecture combining virtualized
+core network services with physical switching and wireless infrastructure.
 
-## Physical Infrastructure
+The purpose of this design is to model real-world constraints commonly
+encountered in production environments, such as:
+- Limited physical interfaces on hosts
+- Gradual introduction of network segmentation
+- Coexistence of virtual and physical endpoints
+- Incremental validation instead of greenfield deployment
 
-- ISP-provided modem/router
-- Edge router (retained as transit device)
-- PoE injector/device
-- Two managed Ethernet switches
-- Wireless access point(s)
-- Dedicated server hardware
-- Windows 11 host system running VMware Workstation
+The environment intentionally avoids abstracted or fully simulated networks
+in favor of observable, debuggable behavior.
 
-## Logical Topology
+## Hybrid Architecture Model
 
-Internet  
-→ ISP Gateway  
-→ Edge Router (Transit / No DHCP / No VPN)  
-→ **Virtual Firewall (pfSense VM)**  
-→ Switches  
-→ APs, Servers, Clients  
+The architecture is hybrid in two dimensions:
 
-All routing, DHCP, and policy enforcement occur at the firewall layer.
+### Virtualized Core
+- Firewall and routing services are virtualized
+- Internal LAN exists as a virtual network segment
+- Client systems are deployed as virtual machines
 
-## Responsibility Separation
+This allows:
+- Rapid recovery from configuration errors
+- Snapshot-based experimentation
+- Policy testing without physical rewiring
 
-| Layer | Role |
-|----|----|
-| Firewall | Routing, NAT, DHCP, Security Policy |
-| Switching | Layer-2 forwarding, port connectivity |
-| Wireless | Client access |
-| Server | Virtualization & monitoring |
-| Clients | User and admin simulation |
+### Physical Access Layer
+- Physical gigabit switches provide downstream connectivity
+- Wireless access point delivers client access
+- All physical hardware sits downstream of the firewall
 
-This separation improves fault isolation and mirrors enterprise operational models.
+This ensures:
+- Real switching behavior
+- Real broadcast domains
+- Physical validation of link, power, and throughput
 
+The firewall acts as the **convergence point** between virtual infrastructure
+and physical access.
+
+## Architectural Constraints and Decisions
+
+A single physical NIC on the host required careful separation of WAN and LAN
+through virtualization rather than cabling. Instead of forcing a dual-NIC
+design prematurely, the architecture was adapted to function correctly
+within this constraint while preserving future expansion options.
+
+## Current Architectural State
+
+The environment currently represents a validated baseline. Core connectivity,
+firewall reachability, and client traffic flow are confirmed prior to
+introducing additional services.
