@@ -1,32 +1,33 @@
 # Virtualization Strategy
 
-## Host & Hypervisor
+## Role of Virtualization
 
-- Host OS: Windows 11
-- Hypervisor: VMware Workstation
+Virtualization provides controlled experimentation while preserving realism.
+It is used to represent infrastructure components, not abstract them away.
 
-## Virtual Machines
+## Issue Encountered: Interface Mapping Ambiguity
 
-| VM Name | Role |
-|------|-----|
-| pfSense | Firewall / Router |
-| cockpit-server | Monitoring & VM control |
-| Win11-Client-01 | User simulation |
-| (Optional) Win11-Admin | Admin workstation |
+### What Happened
 
-## Design Goals
+Initial VM network adapter assignments resulted in confusion over which
+interfaces represented WAN vs LAN inside the firewall.
 
-Virtualization is used to:
-- Reduce hardware requirements
-- Enable rapid testing and recovery
-- Simulate multiple client systems
-- Support automation experiments
+### What Was Learned
 
-Snapshots and resource controls provide safe rollback mechanisms.
+Virtual interfaces are functionally equivalent at creation time. Explicit
+labeling and intentional mapping are required to prevent misconfiguration.
 
-## MSP Perspective
+This emphasized the importance of:
+- Naming conventions
+- Interface documentation
+- One-to-one mental models between virtual and physical ports
 
-Virtualization allows MSPs to:
-- Reproduce client issues
-- Test upgrades safely
-- Stage environments for deployment
+### Resolution
+
+Each interface was explicitly identified and validated during assignment.
+Connectivity tests were performed after each change to confirm behavior.
+
+## Current State
+
+The virtualization layer is stable and supports client onboarding,
+monitoring integration, and future segmentation.
