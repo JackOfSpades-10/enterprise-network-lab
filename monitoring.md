@@ -1,38 +1,42 @@
-# Monitoring, Visibility & Centralization
+# Monitoring and Observability
 
-## Monitoring Platform
+## Monitoring Philosophy
 
-- Software: Cockpit
-- OS: Linux (server installation)
-- Access: Web GUI over HTTPS
+Monitoring is implemented as an enabling layer rather than an afterthought.
+No additional complexity is introduced without visibility into its behavior.
 
-## What Cockpit Monitors
+## Issue Encountered: Lack of Baseline Signal
 
-- Physical server CPU, RAM, disk
-- Network interface throughput
-- Virtual machine lifecycle (start/stop)
-- VM resource usage
-- System services and logs
+### What Happened
 
-## Centralization Strategy
+Early attempts to design dashboards occurred before the network reached a
+stable baseline. This resulted in unclear metrics and misleading conclusions.
 
-Cockpit is intentionally used as a **central operational console** rather than a universal configuration system.
+### What Was Learned
 
-The goal is to:
-- Provide at-a-glance health visibility
-- Offer a simple start/stop control for lab systems
-- Reduce context-switching during incidents
+Monitoring systems amplify both good data and bad assumptions. Without a
+verified baseline, dashboards can obscure issues rather than reveal them.
 
-## Automation
+Effective monitoring requires:
+- Known-good reference states
+- Controlled change windows
+- Clear ownership of metrics
 
-While not fully automated, the design reflects an intent to:
-- Centralize lifecycle actions
-- Minimize repetitive manual steps
-- Explore simple operational automation
+### Adjustments Made
 
+The monitoring rollout was paused until:
+- Firewall routing stabilized
+- Client traffic patterns were predictable
+- Network interfaces behaved deterministically
 
-## Why Not Centralize Everything?
+This reset ensured future dashboards would be meaningful.
 
-Firewall rules, switch configuration, and wireless settings remain in their native tools to  reduce risk.
+## Display Strategy
 
-This separation reflects enterprise practice.
+A dedicated status display will surface:
+- Firewall health
+- Interface state
+- Client activity
+- Latency and availability
+
+The focus is on operational awareness, not decorative metrics.
