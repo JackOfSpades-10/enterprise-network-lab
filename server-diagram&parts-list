@@ -1,0 +1,91 @@
+   [Internet]
+        |
+  EERO Gateway
+        |
+   +--------------------+
+   |     ER605 Router   |
+   |  (Production GW)   |
+   +---------+----------+
+             |
+     LAN Port 1
+             |
+       SG108-A port 1
+   +--------------------------+
+   |     SG108-A Unmanaged    |
+   |                          |
+   +---------------+----------+
+   |               |
+ Host/Server      SG108-A port 2 → Gaming PC
+ (VMware Host)    SG108-A port 3
+                   SG108-A port 8 → SG108-B port 1
+                                   |
+                           SG108-B (Unmanaged)
+                       +-----+-----+------+
+                       |           |
+                  SG108-B p2    SG108-B p3
+                       |           |
+                  PoE Switch    (spare)
+                       |
+                    PoE Port 2
+                       |
+                 Tenda AC1200 AP
+              (wired plus 3 LAN port)
+  Component
+Description
+Qty
+Estimated Cost (USD)
+Notes
+pfSense Firewall
+VM software running on host
+1
+$0 (Free Community)
+Installed on host
+VMware Workstation
+Virtualization host software
+1
+~$200*
+If licensed; otherwise Workstation Player free
+Gaming/Host PC
+Primary host system
+1
+(Owned)
+Assume existing
+ER605 Router
+TP-Link Gigabit VPN Router
+1
+~$70–$100
+Edge router/gateway
+SG108 Switch
+TP-Link 8-port Gigabit (unmanaged)
+2
+~$20–$30 each
+Physical switching
+PoE Switch
+4-port PoE injector/switch
+1
+~$20–$40
+Powers AP
+Tenda AC1200 AP
+Dual-band Wi-Fi access point
+1
+~$30–$50
+Emits SSIDs
+Ethernet Cables
+Cat5e/Cat6 patch cables
+~8+
+~$10–$25 total
+As needed
+Rack Mini Display
+Cockpit/Metrics display
+1
+~$50–$150
+Optional
+Misc Hardware
+Rack mount gear, power strips
+–
+~$20–$60
+Optional
+
+
+total cost aprox. 300$
+
