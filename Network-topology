@@ -1,0 +1,28 @@
+                          Internet
+                              |
+                           EERO Gateway
+                              |
+                       ┌───────────────┐
+                       │  ER605 Router │
+                       │ (Production    │
+                       │   Default GW)  │
+                       └───────────────┘
+                                  |
+                           192.168.0.0/24
+                                  |
+             ┌─────────────────────────────────┐
+             |                                 |
+       SG108-A Switch                    SG108-B Switch
+ (Unmanaged, Access Layer)       (Unmanaged, Extended Access)
+             |                                 |
+   ┌─────────┼─────────┐             ┌─────────┼─────────┐
+   |         |         |             |         |         |
+ PC / Host  PoE Switch  Tenda AP      (Available Ports)
+    |         |            |      (All flat layer2 domain)
+    |         |            |
+Virtualization Host       Wi-Fi SSIDs
+   |                        /   |    \
+pfSense VM (NAT + LAN)   LAB-MGMT  LAB-USERS  LAB-GUEST
+   | VMnet8 ↔ WAN
+   | VMnet1 ↔ LAN (192.168.50.0/24)
+   +----------------------------------------------------------------+
