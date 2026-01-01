@@ -1,39 +1,58 @@
-# Network Design & Traffic Flow
+# Network Design and Addressing
 
-## Core Networking Principles
+## Network Design Intent
 
-The network design enforces a single authoritative control point for all traffic: the firewall.
+The network is designed to prioritize clarity and controllability over
+density or complexity during early stages.
 
-All systems receive:
-- IP addressing via firewall DHCP
-- Default gateway pointing to the firewall
-- DNS resolution controlled by the firewall
+Flat Layer 2 operation was intentionally selected as a starting point to:
+- Reduce configuration surface area
+- Simplify troubleshooting
+- Establish predictable traffic paths
 
-This ensures no device can bypass inspection or policy enforcement.
+Segmentation is planned but deferred until baseline behavior is fully
+understood and observable.
 
-## Traffic Flow Enforcement
+## Addressing and Interfaces
 
-Physical devices, wireless clients, and virtual machines all traverse:
+- LAN subnet: 192.168.50.0/24
+- LAN gateway: 192.168.50.1
+- DHCP: Enabled (temporary)
 
-Client  
-→ Switch / AP  
-→ Firewall  
-→ Upstream Router  
-→ Internet  
+Address allocation is currently centralized to support rapid client onboarding
+and troubleshooting.
 
-This unified flow simplifies troubleshooting and logging.
+## Issue Encountered: Hybrid Address Leakage
 
-## Simulated Office Traffic
+### What Happened
 
-The environment supports:
-- Virtual Windows 11 user clients
-- Administrative access from the host system
-- Server-to-internet traffic
-- Management-plane access
+During initial deployment, the host system obtained addresses from both
+the upstream network and the lab LAN simultaneously. This resulted in:
+- Conflicting default gateways
+- Intermittent loss of firewall GUI access
+- Confusing routing behavior on the host
 
-## Benefits
+### What Was Learned
 
-- Central packet capture location
-- Predictable routing paths
-- Standardized client onboarding
-- Reduced troubleshooting complexity
+In a hybrid virtualization model, the host effectively becomes a multi-homed
+system. Without clear separation, the operating system may route traffic
+through unintended interfaces, leading to false positives during testing.
+
+This highlighted the importance of understanding:
+- Host routing tables
+- Virtual adapter priority
+- Gateway assignment behavior
+
+### How It Was Addressed
+
+The lab LAN was isolated using a host-only virtual network. The upstream
+interface retained sole ownership of the default gateway, while the lab
+network was treated as a controlled, non-internet-routed segment.
+
+This restored deterministic routing and eliminated ambiguity.
+
+## Switching and Wireless Status
+
+Physical switches and wireless infrastructure are operational but currently
+function in access-only mode. VLAN trunking and SSID segmentation will be
+introduced once routing and monitoring are stabilized.
