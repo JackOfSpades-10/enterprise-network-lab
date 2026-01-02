@@ -1,4 +1,4 @@
-![Screenshot 2 – VLAN Configuration](images/IMG_7196.jpeg)
+![Screenshot 2 – VLAN Configuration](images/IMG_7196.JPEG)
 
 # Firewall-Centric Homelab Simulating a Commercial MSP Environment
 
@@ -31,7 +31,7 @@ This project is:
 
 
 Design decisions were made to reflect how MSPs actually deploy, manage, and troubleshoot infrastructure.
-![Screenshot 1 – Interface Assignments](images/IMG_7195.jpeg)
-![Screenshot 3 – Guest Firewall Rules](images/IMG_7197.jpeg)
+![Screenshot 1 – Interface Assignments](images/IMG_7195.JPEG)
+![Screenshot 3 – Guest Firewall Rules](images/IMG_7197.JPEG)
 
 Please note that the information in this repo was compiled from Microsoft Copilot using all of the notes, and relavent infromation about the project
