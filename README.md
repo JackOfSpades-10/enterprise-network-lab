@@ -1,6 +1,7 @@
+# Firewall-Centric Homelab Simulating a Commercial MSP Environment
 ![Screenshot 2 – VLAN Configuration](images/IMG_7196.JPEG)
 
-# Firewall-Centric Homelab Simulating a Commercial MSP Environment
+
 
 ## Purpose
 
